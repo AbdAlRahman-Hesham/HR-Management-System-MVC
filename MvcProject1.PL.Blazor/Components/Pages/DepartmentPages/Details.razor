@@ -1,0 +1,45 @@
+﻿@page "/department/details/{id:int?}"
+@inject IDepartmentRepository _IDepartmentRepository
+<div class="container-lg bg-white p-4 mb-4" s>
+    <center>
+        <p>
+            <strong>@Model.Name </strong>
+        </p>
+    </center>
+    <div class="container">
+
+        <p>
+            Id: @Model.Id
+        </p>
+        <p>
+            Code: @Model.Code
+        </p>
+        <p>
+            Date Of Creation: @Model.DateOfCreation
+        </p>
+
+
+
+    </div>
+    <a href="/department" class="btn btn-danger">
+        Back
+    </a>
+
+</div>
+@code{
+    [Parameter]
+    public int? id { get; set; }
+    Department? Model { get; set; }
+
+    protected override void OnInitialized()
+    {
+        if(id.HasValue){
+            var dep = _IDepartmentRepository.Get(id.Value);
+            if (dep != null)
+            {
+                Model = dep;
+            }
+                    
+        }
+    }
+}

@@ -1,0 +1,56 @@
+﻿@page "/department"
+
+
+<div style="background-color:white; padding:10px">
+
+    <div class="table-title">
+        <div class="row">
+            <div class="col-sm-6"><h2>Department <b>Details</b></h2></div>
+            <div class="col-sm-6">
+                <div class="search-box">
+                    <i class="material-icons">&#xE8B6;</i>
+                    <input type="text" class="form-control" placeholder="Search&hellip;">
+                </div>
+                <div>
+                    <a href="/Department/Create" class="btn btn-danger p-1">Add New</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    @if (Departments != null && Departments.Any())
+    {
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Name <i class="fa fa-sort"></i></th>
+                    <th>Code</th>
+                    <th>Date Of Creation</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var department in Departments.Select((d, index) => new { Index = index, Department = d }))
+                {
+                    <tr>
+                        <td>@(department.Index + 1)</td>
+                        <td>@department.Department.Name</td>
+                        <td>@department.Department.Code</td>
+                        <td>@department.Department.DateOfCreation.ToString("yyyy-MM-dd")</td>
+                        <td>
+                            <a href="/department/details/@department.Department.Id" class="view" title="Details" data-toggle="tooltip"><i class="material-icons">&#xE417;</i></a>
+                            <a href="/department/edit/@department.Department.Id" class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
+                            <a href="/department/delete/@department.Department.Id" class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <p class="alert-warning p-2">No records found.</p>
+    }
+
+</div>
+

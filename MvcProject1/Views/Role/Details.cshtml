@@ -1,0 +1,27 @@
+﻿@model RoleViewModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<div class="container-lg bg-white p-4 mb-4" s>
+    <center>
+        <p>
+            <strong>@Model.Name </strong>
+        </p>
+    </center>
+    <div class="container">
+
+        <p>
+            Id: @Model.Id
+        </p>
+        
+
+
+
+    </div>
+    <a asp-action="Index" class="btn btn-danger">
+        Back
+    </a>
+
+</div>

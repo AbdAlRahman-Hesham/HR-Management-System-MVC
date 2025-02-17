@@ -1,0 +1,18 @@
+﻿@model EmployeeViewModel
+<div class="container-lg">
+
+    <form asp-action="Edit" enctype="multipart/form-data">
+        <input type="hidden" name="_method" value="PUT" />
+
+        <partial name="Partial/AddEditPartial"></partial>
+        <input type="hidden"  asp-for="ImgUrl"/>
+
+        <partial name="Partial/BackAndActionBtnPartial" model="@(new{ShowAction=true,Name="Edit"})" />
+
+
+    </form>
+</div>
+
+@section ValidationScript {
+    <partial name="_ValidationScriptsPartial" />
+}

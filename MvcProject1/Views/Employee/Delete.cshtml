@@ -1,0 +1,6 @@
+﻿@model EmployeeViewModel
+
+<p class="alert-danger m-2 p-2">Are you sure to delete @Model.FirstName @Model.LastName Employee</p>
+
+<a asp-action="DeleteAction" asp-route-Id="@Model.Id" class="btn btn-primary my-5 ">Delete</a>
+<partial name="Partial/BackAndActionBtnPartial" model="@(new{ShowAction=false,Name=""})" />

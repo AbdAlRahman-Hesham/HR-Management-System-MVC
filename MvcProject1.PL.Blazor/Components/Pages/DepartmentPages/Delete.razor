@@ -1,0 +1,40 @@
+﻿@page "/department/delete/{id:int?}"
+@inject IDepartmentRepository _IDepartmentRepository
+@inject NavigationManager Navigation
+@rendermode InteractiveServer
+
+
+<p class="alert-danger m-2 p-2">Are you sure to delete @Model.Name department</p>
+
+<button @onclick="DeleteDep" class="btn btn-primary my-5 ">Delete</button>
+<a href="/department" class="btn btn-danger my-5 ">
+    Back
+</a>
+
+@code {
+    private Department? Model { get; set; }
+
+    [Parameter]
+    public int? id { get; set; }
+
+    protected override void OnInitialized()
+    {
+        if (id.HasValue)
+        {
+            Model = _IDepartmentRepository.Get(id.Value);
+        }
+    }
+    private void DeleteDep()
+    {
+        if(Model != null)
+        {
+            _IDepartmentRepository.Delete(id.Value);
+            Navigation.NavigateTo("/department");
+        }
+       
+    }
+}
+
+
+
+

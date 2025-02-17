@@ -1,0 +1,58 @@
+﻿@model IEnumerable<DepartmentViewModel>
+<div style="background-color:white; padding:10px">
+
+    <div class="table-title">
+        <div class="row">
+            <div class="col-sm-8"><h2>Department <b>Details</b></h2></div>
+            <div class="col-sm-4">
+                <div class="search-box">
+                    <i class="material-icons">&#xE8B6;</i>
+                    <input type="text" class="form-control" placeholder="Search&hellip;">
+                </div>
+                
+            </div>
+            <div>
+                <a href="/Department/Create" class="btn btn-danger p-0 m-0">Add New</a>
+            </div>
+        </div>
+    </div>
+    @if (Model.Count() > 0)
+    {
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Name <i class="fa fa-sort"></i></th>
+                    <th>Code</th>
+                    <th>Date Of Creation</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.Select((value,i)=>new{i ,value}))
+                {
+                    <tr>
+                        <td>@(item.i +1) </td>
+                        <td>@item.value.Name</td>
+                        <td>@item.value.Code</td>
+                        <td>@item.value.DateOfCreation.ToString("yyyy-MM-dd")</td>
+                        <td>
+                            <a asp-action="Details" asp-route-Id="@item.value.Id" class="view" title="Details" data-toggle="tooltip"><i class="material-icons">&#xE417;</i></a>
+                            <a asp-action="Edit" asp-route-Id="@item.value.Id" class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
+                            <a asp-action="Delete" asp-route-Id="@item.value.Id" class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
+                        </td>
+                    </tr>
+                }
+
+
+
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <p class="alert-warning p-2">No records found.</p>
+    }
+
+
+</div>

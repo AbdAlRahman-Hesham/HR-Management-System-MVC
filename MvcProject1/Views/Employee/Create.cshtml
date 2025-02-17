@@ -1,0 +1,17 @@
+﻿@model EmployeeViewModel
+<div class="container-lg">
+
+<form asp-action="Create" enctype="multipart/form-data">
+
+        <partial name="Partial/AddEditPartial"/>
+        <partial name="Partial/BackAndActionBtnPartial" 
+        model="@(new{ShowAction=true,Name="Save"})" />
+
+
+    </form>
+ 
+</div>
+
+@section ValidationScript {
+    <partial name="_ValidationScriptsPartial" />
+}

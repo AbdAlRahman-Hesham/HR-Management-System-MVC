@@ -1,0 +1,32 @@
+﻿@model UserViewModel
+
+
+<div class="container-lg bg-white p-4 mb-4" s>
+    <center>
+        <p>
+            <strong>@Model.UserName</strong>
+        </p>
+    </center>
+    <div class="container">
+
+
+        <p>
+            Id: @Html.DisplayFor(e => Model.Id)
+        </p>
+        <p>
+            Email: @Html.DisplayFor(e => Model.Email)
+        </p>
+        <p>
+            Phone Number: @Html.DisplayFor(e => Model.PhoneNumber)
+        </p>
+        <p>
+            Roles: @string.Join(", ", Model.UserRolesNames)
+        </p>
+
+
+
+    </div>
+    <partial name="Partial/BackAndActionBtnPartial" model="@(new{ShowAction=false,Name=""})" />
+
+
+</div>

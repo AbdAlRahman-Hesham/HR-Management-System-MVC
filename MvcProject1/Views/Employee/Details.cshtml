@@ -1,0 +1,44 @@
+﻿@model EmployeeViewModel
+<div class="container-lg bg-white p-4 mb-4" s>
+    <center>
+
+        @if (Model.ImgUrl != null)
+        {
+            <img src="~/Files/Images/@(Model.ImgUrl)"
+            class="img-thumbnail rounded-circle"
+            width="100px"
+            alt="PhotoProfil"/>
+        }
+        <p>
+            <strong>@Model.FirstName @Model.LastName </strong>
+        </p>
+    </center>
+    <div class="container">
+        
+
+        <p>
+            Email: @Html.DisplayFor(e=>Model.Email)
+        </p> 
+        <p>
+            Phone Number: @Html.DisplayFor(e=>Model.PhoneNumber)
+        </p>  
+        <p>
+             Salary: @Html.DisplayFor(e=>Model.Salary)
+        </p>
+        <p>
+            Age: @Model.Age
+        </p>  
+        <p>
+            Is Active: @Html.DisplayFor(e=>Model.IsActive)
+        </p> 
+        <p>
+            Hire Date: @Html.DisplayFor(e=>Model.HireDate)
+        </p>
+
+
+
+    </div>
+    <partial name="Partial/BackAndActionBtnPartial" model="@(new{ShowAction=false,Name=""})" />
+
+
+</div>
